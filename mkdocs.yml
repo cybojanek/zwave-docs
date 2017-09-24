@@ -1,0 +1,16 @@
+site_name: ZWave Documentation
+
+theme: cinder
+
+pages:
+- Home: 'index.md'
+- Packet:
+  - 'Format': 'packet/format.md'
+- Message:
+  - 'Format': 'message/format.md'
+  - 'Controller Messages': 'message/controller.md'
+  - 'Discovery Messages': 'message/discovery.md'
+- Device:
+  - 'Classes': 'device/classes.md'
+- Command:
+  - 'Classes': 'command/classes.md'
