@@ -2,7 +2,7 @@
 
 [Z-Wave](https://en.wikipedia.org/wiki/Z-Wave) is a wireless communications protocol used primarily for home automation.
 
-A Z-Wave network consists of Z-Wave devices, also known as *nodes*. A node is *included* into a network through a pairing process with the network *controller*, and can only belong to one network at a time. Each node is identified by a unique one byte node ID assigned during the pairing process. Z-Wave nodes form a *mesh* network, and route messages to each other, which means that the controller does not have to be in range of all the nodes.
+A Z-Wave network consists of Z-Wave devices, also known as *nodes*. A node is *included* into a network through a pairing process with the network *controller*, and can only belong to one network at a time. Each node is identified by a unique one byte node ID assigned during the pairing process. Z-Wave nodes form a *mesh* network, and route messages through each other, which means that the controller does not have to be in range of all the nodes.
 
 A typical controller is a Z-Wave USB Stick that can be plugged into any computer, and shows up as a USB Serial device. Applications interact with nodes through the controller, by sending and receiving Z-Wave [messages](message/format) encapsulated in Z-Wave [packets](packet/format).
 

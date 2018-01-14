@@ -104,16 +104,23 @@ A serial API get capabilities request has an empty body, and the response includ
 
 **Response Body**:
 
-    --------------------------------------------------------------------------------
-    | Version | Manufacturer ID | Product Type | Product ID | Supported API Bitmap |
-    --------------------------------------------------------------------------------
-    | x?? x?? |         x?? x?? |      x?? x?? |    x?? x?? |       32 bytes * x?? |
-    --------------------------------------------------------------------------------
+    ---------------------------------------------------------------------
+    | Application Version | Application Revision | Manufacturer ID | ...
+    ---------------------------------------------------------------------
+    |                 x?? |                  x?? |         x?? x?? | ...
+    ---------------------------------------------------------------------
 
-    Version: 2 byte little endian (check endiannes?)
-    Manufacturer ID: 2 byte big endian (check endiannes?)
-    Product Type: 2 byte big endian (check endiannes?)
-    Product ID: 2 byte big endian (check endiannes?)
+    -------------------------------------------------------
+     ... Product Type | Product ID | Supported API Bitmap |
+    -------------------------------------------------------
+              x?? x?? |    x?? x?? |       32 bytes * x?? |
+    -------------------------------------------------------
+
+    Application Version:
+    Application Revision:
+    Manufacturer ID: 2 byte big endian
+    Product Type: 2 byte big endian
+    Product ID: 2 byte big endian
 
     Supported API Bitmap:
         Byte 0:
@@ -130,3 +137,41 @@ A serial API get capabilities request has an empty body, and the response includ
 
         Byte 1 - 31:
         same pattern
+
+# GetVersion 0x15
+
+A GetVersion request has an empty body, and the response includes information about the version of the controller.
+
+**Message Type**: 0x15
+
+**Request Body**: empty
+
+**Response Body**:
+
+    ---------------------------------
+    |           Info | Library Type |
+    ---------------------------------
+    | String x?? * ? |          x?? |
+    ---------------------------------
+
+    Info: null terminated string
+    Library Type: 1 byte
+
+# MemoryGetID 0x20
+
+A MemoryGetID request has an empty body, and the response includes information about the home ID and node ID of the controller
+
+**Message Type**: 0x20
+
+**Request Body**: empty
+
+**Response Body**:
+
+    -----------------------------
+    |        Home ID  | Node ID |
+    -----------------------------
+    | x?? x?? x?? x?? |     x?? |
+    -----------------------------
+
+    Home ID: 4 bytes big endian
+    Node ID: 1 byte

@@ -141,3 +141,25 @@ Another CAN sceniario will occur, if the ZWave library sends a request while the
 
                               ACK
                        ----------------->
+
+### NAK Retransmit
+
+If the controller or ZWave library fails to parse a packet, due to byte loss, bit corruption, malformed packets, or invalid checksums, the receiving side can reply with a NAK to ask for a retransmit.
+
+    ZWave Library                            USB Controller
+                        SOF (Request A)
+                       ---------------->
+
+                              NAK
+                       <----------------
+
+                        SOF (Request A)
+                       ---------------->
+
+                        SOF (Response A)
+                       <-----------------
+
+                              ACK
+                       ----------------->
+
+This scenario can easliy happen if the controller has just been opened, since partial packets might have been buffered by the operating system. It is advisable that the ZWave library send a NAK immediately after opening the controller.
